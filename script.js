@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const messageDiv = document.getElementById('message');
             const boardDiv = document.getElementById('board');
             
-            let player1 = '';
-            let player2 = '';
+            let player1 = 'Player1';
+            let player2 = 'Player2';
             let currentPlayer = 1;
             let gameBoard = ['', '', '', '', '', '', '', '', ''];
             let gameActive = true;
