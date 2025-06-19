@@ -1,6 +1,4 @@
-/*  your css code here. If applicable */
-<style>
-        .container {
+.container {
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
@@ -19,9 +17,8 @@
         
         button {
             padding: 8px 15px;
-			margin: 5px  5px;
-            background-color: grey;
-			color: white;
+            background-color: #4CAF50;
+            color: white;
             border: none;
             cursor: pointer;
         }
@@ -64,4 +61,3 @@
         .hidden {
             display: none;
         }
-    </style>

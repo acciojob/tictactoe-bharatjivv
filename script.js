@@ -12,18 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
             let gameBoard = ['', '', '', '', '', '', '', '', ''];
             let gameActive = true;
             
+            // Initialize the board with default player names
+            document.getElementById('player-1').value = player1;
+            document.getElementById('player-2').value = player2;
+            
             // Create the board cells
             for (let i = 0; i < 9; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'cell';
-                cell.id = i + 1;
-                cell.addEventListener('click', () => handleCellClick(i));
+                cell.id = (i + 1).toString();
+                cell.dataset.index = i;
+                cell.addEventListener('click', handleCellClick);
                 boardDiv.appendChild(cell);
             }
             
             submitBtn.addEventListener('click', function() {
-                player1 = document.getElementById('player1').value.trim() || 'Player1';
-                player2 = document.getElementById('player2').value.trim() || 'Player2';
+                player1 = document.getElementById('player-1').value.trim() || 'Player1';
+                player2 = document.getElementById('player-2').value.trim() || 'Player2';
                 
                 inputSection.classList.add('hidden');
                 gameSection.classList.remove('hidden');
@@ -31,11 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateMessage(`${player1}, you're up!`);
             });
             
-            function handleCellClick(index) {
+            function handleCellClick(e) {
+                const index = parseInt(e.target.dataset.index);
+                
                 if (!gameActive || gameBoard[index] !== '') return;
                 
                 gameBoard[index] = currentPlayer === 1 ? 'X' : 'O';
-                document.getElementById(index + 1).textContent = gameBoard[index];
+                e.target.textContent = gameBoard[index];
                 
                 if (checkWin()) {
                     const winner = currentPlayer === 1 ? player1 : player2;
@@ -78,16 +85,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageDiv.textContent = msg;
             }
             
-            // For testing purposes, you can expose these functions
-            window.resetGame = function() {
-                gameBoard = ['', '', '', '', '', '', '', '', ''];
-                currentPlayer = 1;
-                gameActive = true;
-                
-                document.querySelectorAll('.cell').forEach(cell => {
-                    cell.textContent = '';
-                });
-                
-                updateMessage(`${player1}, you're up!`);
+            // Expose functions for testing
+            window.game = {
+                resetGame: function() {
+                    gameBoard = ['', '', '', '', '', '', '', '', ''];
+                    currentPlayer = 1;
+                    gameActive = true;
+                    
+                    document.querySelectorAll('.cell').forEach(cell => {
+                        cell.textContent = '';
+                    });
+                    
+                    updateMessage(`${player1}, you're up!`);
+                },
+                getCurrentPlayer: function() {
+                    return currentPlayer;
+                },
+                getGameBoard: function() {
+                    return gameBoard;
+                }
             };
         });
