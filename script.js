@@ -41,12 +41,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (!gameActive || gameBoard[index] !== '') return;
                 
-                gameBoard[index] = currentPlayer === 1 ? 'X' : 'O';
+                gameBoard[index] = currentPlayer === 1 ? 'x' : 'O';
                 e.target.textContent = gameBoard[index];
                 
                 if (checkWin()) {
                     const winner = currentPlayer === 1 ? player1 : player2;
-                    updateMessage(`${winner}, congratulations you won!`);
+                    updateMessage(`${winner} congratulations you won!`);
                     gameActive = false;
                     return;
                 }
