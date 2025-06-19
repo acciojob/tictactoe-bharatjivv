@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (!gameActive || gameBoard[index] !== '') return;
                 
-                gameBoard[index] = currentPlayer === 1 ? 'x' : 'O';
+                gameBoard[index] = currentPlayer === 1 ? 'x' : 'o';
                 e.target.textContent = gameBoard[index];
                 
                 if (checkWin()) {
