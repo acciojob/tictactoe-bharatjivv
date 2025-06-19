@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let gameActive = true;
             
             // Initialize the board with default player names
-            document.getElementById('player-1').value = player1;
-            document.getElementById('player-2').value = player2;
+            document.getElementById('player1').value = player1;
+            document.getElementById('player2').value = player2;
             
             // Create the board cells
             for (let i = 0; i < 9; i++) {
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             submitBtn.addEventListener('click', function() {
-                player1 = document.getElementById('player-1').value.trim() || 'Player1';
-                player2 = document.getElementById('player-2').value.trim() || 'Player2';
+                player1 = document.getElementById('player1').value.trim() || 'Player1';
+                player2 = document.getElementById('player2').value.trim() || 'Player2';
                 
                 inputSection.classList.add('hidden');
                 gameSection.classList.remove('hidden');
