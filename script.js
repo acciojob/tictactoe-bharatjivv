@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             submitBtn.addEventListener('click', function() {
-                player1 = document.getElementById('player-1').value.trim() || 'Player 1';
-                player2 = document.getElementById('player-2').value.trim() || 'Player 2';
+                player1 = document.getElementById('player1').value.trim() || 'Player1';
+                player2 = document.getElementById('player2').value.trim() || 'Player2';
                 
                 inputSection.classList.add('hidden');
                 gameSection.classList.remove('hidden');
